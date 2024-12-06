@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 
 img = cv2.imread("assets/shapes.png")
+#bcs corner detection me colour se farak nai padta and grayscale is easier to work with
 gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # SHI-TOMASI METHOD
