@@ -6,7 +6,7 @@ print(img.shape) # print the image dimensions
 print(img[0, 0]) # print the first pixel
 
 #Note: jab grayscale image tab ek hi number return hoga btw 0 and 255 (0-black and 255-white)
-#      jab colour return hoga tab 3 numbers ka arrray return (BGR)
+#      jab colour return hoga tab 3 numbers ka array return (BGR)
 #      imread returns a numpy array 
 
 # img = img * 2
@@ -21,6 +21,8 @@ rgb_img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 print(rgb_img[0, 0])
 
 cv2.imshow("Cat", img)
+#Note: if you print rgb_img instead of img, to output theek se NAHI aayega...bcs imshow BGR ke hisab se print and regimg me to RGB ke hisab se array me stored hai
+
 cv2.waitKey(0) # pause the program until any key is pressed
 cv2.destroyAllWindows()
 
