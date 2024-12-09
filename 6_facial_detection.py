@@ -29,6 +29,7 @@ def detect_features(frame):
     for (x, y, w, h) in faces:
         frame = cv2.rectangle(frame, (x, y), (x+w, y+h),
                             color=(0, 255, 0), thickness=5)
+      #it returns the modified image (when used with assignment)
         face = frame[y : y+h, x : x+w]
         #face detect ho gaya aur x,y,h,w mil gaye to fir we store that region in another variable for further processing
         gray_face = gray[y : y+h, x : x+w]
