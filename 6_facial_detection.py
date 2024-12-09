@@ -11,11 +11,29 @@ def detect_features(frame):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
             # You can also specify minSize and maxSize
+# detectMultiScale is a method of the cv2.CascadeClassifier class. It scans an image to detect objects (e.g., faces) by analyzing regions at multiple scales.
+# Specifies how much the image size is reduced at each scale.
+# A scale factor of 1.3 means the image is scaled down to 1/1.3 of its size at each step.
+#   Specifies how many neighbors each rectangle candidate must have to be considered a valid detection.
+# A higher value means stricter detection criteria (fewer false positives).
+# A lower value may include more detections, including false positives.
+  
+# faces is a list of rectangles returned by face_cascade.detectMultiScale.
+# Each rectangle represents a detected face, described by its:
+# x,y: Top-left corner of the bounding box.
+# w,h: Width and height of the bounding box.
+# The function returns a list of rectangles (bounding boxes) for the detected objects.
+# Each rectangle is described as (x,y,w,h), where x,y are the coordinates of the top-left corner, and 
+# w,h are the width and height of the rectangle.
+  
     for (x, y, w, h) in faces:
         frame = cv2.rectangle(frame, (x, y), (x+w, y+h),
                             color=(0, 255, 0), thickness=5)
         face = frame[y : y+h, x : x+w]
+        #face detect ho gaya aur x,y,h,w mil gaye to fir we store that region in another variable for further processing
         gray_face = gray[y : y+h, x : x+w]
+
+      #smiles aur eyes me frame NAHI gray_face as input daala hai
         smiles = smile_cascade.detectMultiScale(gray_face, 
                             2.5, minNeighbors=9)
         for (xp, yp, wp, hp) in smiles:
@@ -24,11 +42,13 @@ def detect_features(frame):
         
         eyes = eye_cascade.detectMultiScale(gray_face, 
                     2.5, minNeighbors=7)
+      #Loops through all detected eyes in eyes
         for (xp, yp, wp, hp) in eyes:
             face = cv2.rectangle(face, (xp, yp), (xp+wp, yp+hp),
                     color=(255, 0, 0), thickness=5)
     
     return frame
+  #modified frame is returned
 
 stream = cv2.VideoCapture(0)
 
