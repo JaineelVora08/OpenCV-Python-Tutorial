@@ -28,3 +28,5 @@ cv2.destroyAllWindows()
 
 gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 cv2.imwrite("assets/1_gray_cat.jpg", gray_img)
+# imwrite vaala destroyAllWindows ke baad bhi likh sakte hai
+# destoyAllWindows is NOT the end of the program
