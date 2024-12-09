@@ -39,8 +39,11 @@ blur_img = cv2.blur(img, ksize=(111, 111))
 # GAUSSIAN BLUR
 gaus_img = cv2.GaussianBlur(img, ksize=(11, 11),
             sigmaX=30, sigmaY=300)
+# ksize - kernel size has to be odd
+# large kernel - more blurring and small kernel - less blurring
 
-# SHARPEN
+# SHARPEN - sharpening me you want a greater difference between your central pixel and the surrounding pixels 
+#central value must be greater than sum of the negative values
 sharpen_filter = np.array([
     [0, -1, 0],
     [-1, 5, -1],
@@ -54,6 +57,7 @@ gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 gray_img = cv2.GaussianBlur(img, ksize=(3, 3),
             sigmaX=1, sigmaY=1)
 edges = cv2.Laplacian(gray_img, ddepth=-1)
+# how this works is it looks for the changes in Direction and colors when there's a big gap in colors between one side of an edge and another side of an edge that'll trigger the laplacian filter
 
 cv2.imshow("Cat!", edges)
 cv2.waitKey(0)
