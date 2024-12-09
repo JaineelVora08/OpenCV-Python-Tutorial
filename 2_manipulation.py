@@ -12,6 +12,7 @@ img = cv2.resize(img, (0, 0), fx=1, fy=0.5)
 #note: crop ke liye function NAHI hai:
 #crop karne ke liye hum numpy array ke yeh element se yeh element (ie slicing) use karte hai   
 height, width = img.shape[0], img.shape[1]
+# shape gives (rows,columns)
 img = img[int(height/3) : , 50 : -50]
 #upar se height/3 se start karo and udhar se leke end tak
 
