@@ -9,6 +9,8 @@ blur_filter = np.array([
     [1, 1, 1]
 ])
 blur_filter = blur_filter / 9
+#9 se exposure same rahega
+# >9 se darker (bcs kam ho jaayegi value) and <9 se lighter (bcs badh jaayegi value)
 blur_img = cv2.filter2D(img, ddepth=-1, 
         kernel=blur_filter)
 
