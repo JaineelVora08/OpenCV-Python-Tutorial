@@ -50,6 +50,9 @@ while True:
 #     It is initialized with parameters that define where the video will be saved, what codec to use, the frame rate, and the resolution.
 #     You use the output.write(frame) method to write each frame of the video.
     cv2.imshow("Webcam!", frame)
+
+    #if cv.waitKey(20) & 0xFF == ord('q'):
+    #If you're working with real-time video processing, the second form (cv.waitKey(20) & 0xFF) is typically preferred for maintaining performance. For static or single-frame image displays, the first form (cv.waitKey(0)) is more appropriate.
     if cv2.waitKey(1) == ord('q'): # press "q" to quit - window pe cross dabane se band NAHI hoga
         break
 
