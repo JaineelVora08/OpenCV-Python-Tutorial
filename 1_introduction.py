@@ -1,5 +1,9 @@
 import cv2
 
+#this image might go way off screen. The reason for this is because the dimensions
+#of this image were far greater than the dimensions of the monitor that I'm currently working on. - so we use rescaling and resizing images
+#if you have large images, it's possibly going to go off screen.
+
 img = cv2.imread("assets/cat.jpg", cv2.IMREAD_COLOR)
 print(img.shape) # print the image dimensions
 
