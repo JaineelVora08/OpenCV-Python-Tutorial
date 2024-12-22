@@ -51,7 +51,14 @@ while True:
 #     You use the output.write(frame) method to write each frame of the video.
     cv2.imshow("Webcam!", frame)
 
-    #if cv.waitKey(20) & 0xFF == ord('q'):
+    '''
+    OpenCV’s cv2.waitKey() may return a 32-bit integer that includes more information than just the ASCII code of the key. 
+    The value 0xFF (which is 255 in decimal) is a mask that isolates the lower 8 bits of the result from cv2.waitKey(). we effectively extract the key press value (from the lower 8 bits) and discard the irrelevant higher bits.
+    The lower 8 bits represent the key code (e.g., the ASCII value of the key pressed).
+The higher 24 bits may contain other system-specific or irrelevant data that we do not care about when checking the key pressed.
+    '''
+    #if cv.waitKey(20) & 0xFF == ord('q'): - USE THIS
+    # this is essentially if (cv.waitKey(20) & 0xFF) == ord('q'):
     #If you're working with real-time video processing, the second form (cv.waitKey(20) & 0xFF) is typically preferred for maintaining performance. For static or single-frame image displays, the first form (cv.waitKey(0)) is more appropriate.
     if cv2.waitKey(1) == ord('q'): # press "q" to quit - window pe cross dabane se band NAHI hoga
         break
