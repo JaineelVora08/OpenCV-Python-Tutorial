@@ -13,10 +13,13 @@ def detect_features(frame):
             # You can also specify minSize and maxSize
 # detectMultiScale is a method of the cv2.CascadeClassifier class. It scans an image to detect objects (e.g., faces) by analyzing regions at multiple scales.
 # Specifies how much the image size is reduced at each scale.
-# A scale factor of 1.3 means the image is scaled down to 1/1.3 of its size at each step.
-#   Specifies how many neighbors each rectangle candidate must have to be considered a valid detection.
+# Specifies how many neighbors each rectangle candidate must have to be considered a valid detection.
 # A higher value means stricter detection criteria (fewer false positives).
 # A lower value may include more detections, including false positives.
+gray: The input image (in grayscale) in which faces are to be detected.
+scaleFactor: A parameter that compensates for faces appearing smaller the further away they are. It adjusts the image size at each scale of detection. A value of 1.1 is commonly used.A scale factor of 1.3 means the image is scaled down to 1/1.3 of its size at each step
+minNeighbors: This parameter specifies how many neighbors each candidate rectangle should have to retain it. Higher values result in fewer detections but with higher quality. A common value is 5.
+minSize: Specifies the minimum size of the detected faces. In this case, it is set to (30, 30), meaning that faces smaller than 30x30 pixels will be ignored
   
 # faces is a list of rectangles returned by face_cascade.detectMultiScale.
 # Each rectangle represents a detected face, described by its:
@@ -29,7 +32,7 @@ def detect_features(frame):
     for (x, y, w, h) in faces:
         frame = cv2.rectangle(frame, (x, y), (x+w, y+h),
                             color=(0, 255, 0), thickness=5)
-      #it returns the modified image (when used with assignment)
+      #rectangle - it returns the modified image (when used with assignment)
         face = frame[y : y+h, x : x+w]
         #face detect ho gaya aur x,y,h,w mil gaye to fir we store that region in another variable for further processing
         gray_face = gray[y : y+h, x : x+w]
