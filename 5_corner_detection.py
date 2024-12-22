@@ -10,7 +10,7 @@ corners = cv2.goodFeaturesToTrack(gray_img, maxCorners=50,
                 qualityLevel=0.15, minDistance=50)
 corners = np.int0(corners)
 
-# qualityLevel=0.15: A threshold parameter that defines the minimum accepted quality of the corners. It is a value between 0 and 1, where a higher value means fewer, but stronger corners will be detected. A value of 0.15 indicates that the quality of the corners must be at least 15% of the best possible corner quality.
+# qualityLevel=0.15: A threshold parameter that defines the minimum accepted quality of the corners. It is a value between 0 and 1, where a higher value means fewer, but stronger corners will be detected. A value of 0.15 indicates that the quality of the corners must be at least 15% of the best possible corner quality. based on the eigenvalue analysis of the corner strength.
 # corners is a list of points (coordinates) where the algorithm detected corners in the image. These points are typically represented as 2D coordinates (x, y), which correspond to locations of strong features in the image.
 # The cv2.goodFeaturesToTrack() function returns a NumPy array of shape (N, 1, 2), where N is the number of detected corners (up to the specified maxCorners). Each element is a point represented as a 2D array [x, y], where x and y are the coordinates of a corner.
 
@@ -18,6 +18,10 @@ corners = np.int0(corners)
 corners = np.array([[[100, 200]], [[150, 250]], [[200, 300]]])
 This structure has shape (3, 1, 2)
 Here, corner refers to a 2D array (or pair), such as [[100, 200]], and .ravel() flattens it into a 1D array [100, 200]. The ravel() method returns a flattened 1D array, so you can directly unpack it into x and y.
+
+The outermost array has 3 elements (3 detected corners).
+Each of those 3 elements contains a single pair of values representing the coordinates [x, y] of the corner.
+[x,y] vo array ke 2 elements 
 '''
 
 for c in corners:
@@ -28,6 +32,8 @@ for c in corners:
                     color=(0, 0, 255), thickness=-1)
 
 # HARRIS CORNER DETECTION
+# because corner detection works on intensity variations, and color information isn't needed for this purpose.
+# A typical value for k is between 0.04 and 0.15. A higher value of k results in fewer, but more stable corners, while a smaller value detects more corners, but they may be less stable. Sensitivity factor used in the Harris corner detection algorithm. This affects how sharp the corners detected are.
 corners = cv2.goodFeaturesToTrack(gray_img, maxCorners=50,
                 qualityLevel=0.01, minDistance=50,
                 useHarrisDetector=True, k=0.1)
