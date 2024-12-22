@@ -36,7 +36,7 @@ img = cv2.ellipse(img, center=(300, 685), axes=(50, 30),
 # Together, they define the portion of the ellipse that will be drawn.
 # startAngle = 0, endAngle = 360: Draws full ellipse.
 # startAngle = 0, endAngle = 180: Draws the top half of the ellipse.
-# startAngle = 90, endAngle = 270: Draws the right half of the ellipse.
+# startAngle = 90, endAngle = 270: Draws the left half of the ellipse.
 
 
 # RECTANGLE
