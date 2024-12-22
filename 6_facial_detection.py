@@ -10,16 +10,17 @@ eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +
 def detect_features(frame):
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-            # You can also specify minSize and maxSize
+  
+# You can also specify minSize and maxSize
 # detectMultiScale is a method of the cv2.CascadeClassifier class. It scans an image to detect objects (e.g., faces) by analyzing regions at multiple scales.
 # Specifies how much the image size is reduced at each scale.
 # Specifies how many neighbors each rectangle candidate must have to be considered a valid detection.
 # A higher value means stricter detection criteria (fewer false positives).
 # A lower value may include more detections, including false positives.
-gray: The input image (in grayscale) in which faces are to be detected.
-scaleFactor: A parameter that compensates for faces appearing smaller the further away they are. It adjusts the image size at each scale of detection. A value of 1.1 is commonly used.A scale factor of 1.3 means the image is scaled down to 1/1.3 of its size at each step
-minNeighbors: This parameter specifies how many neighbors each candidate rectangle should have to retain it. Higher values result in fewer detections but with higher quality. A common value is 5.
-minSize: Specifies the minimum size of the detected faces. In this case, it is set to (30, 30), meaning that faces smaller than 30x30 pixels will be ignored
+# gray: The input image (in grayscale) in which faces are to be detected.
+# scaleFactor: A parameter that compensates for faces appearing smaller the further away they are. It adjusts the image size at each scale of detection. A value of 1.1 is commonly used.A scale factor of 1.3 means the image is scaled down to 1/1.3 of its size at each step
+# minNeighbors: This parameter specifies how many neighbors each candidate rectangle should have to retain it. Higher values result in fewer detections but with higher quality. A common value is 5.
+# minSize: Specifies the minimum size of the detected faces. In this case, it is set to (30, 30), meaning that faces smaller than 30x30 pixels will be ignored
   
 # faces is a list of rectangles returned by face_cascade.detectMultiScale.
 # Each rectangle represents a detected face, described by its:
@@ -28,6 +29,7 @@ minSize: Specifies the minimum size of the detected faces. In this case, it is s
 # The function returns a list of rectangles (bounding boxes) for the detected objects.
 # Each rectangle is described as (x,y,w,h), where x,y are the coordinates of the top-left corner, and 
 # w,h are the width and height of the rectangle.
+# opencv me + karne se right aur neeche jaayega
   
     for (x, y, w, h) in faces:
         frame = cv2.rectangle(frame, (x, y), (x+w, y+h),
