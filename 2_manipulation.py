@@ -6,8 +6,6 @@ img = cv2.imread("assets/cat.jpg", cv2.IMREAD_COLOR)
 if img is None:
     raise ValueError("Image not found or unable to load.")
 
-
-
 # RESIZE -  3 methods (m3 neeche)
 # format is (width, height) and not (height, width)
 img = cv2.resize(img, (1000, 2000))
