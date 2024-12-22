@@ -28,12 +28,13 @@ img = cv2.rotate(img, cv2.ROTATE_180)
 
 #agar koi non standard angle se image rotate karvana ho to:
 #M is rotation matrix
+# center: The point about which the scaling and rotation will occur - so NOT necessary ki center ke about hi ho - you can also rotate about some other point
 M = cv2.getRotationMatrix2D(center=(width/2, height/2), 
                             angle=150, scale=1)
-img = cv2.warpAffine(img, M, (width, height))  
-# yaha it is newwidth and newheight - If these dimensions do not account for scaling or rotation, parts of the transformed image may be cropped or have unwanted blank areas.
-# new_width = int(width * scale)
-# new_height = int(height * scale)
+img = cv2.warpAffine(img, M, (new_width, new_height))  
+# yaha warpAffine me it is newwidth and newheight BUT getrotationmatrix me old - If these dimensions do not account for scaling or rotation, parts of the transformed image may be cropped or have unwanted blank areas.
+new_width = int(width * scale)
+new_height = int(height * scale)
 
 #its source,destination
 #note yaha it is (width,height) NOT (height,width)
