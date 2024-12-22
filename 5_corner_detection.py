@@ -13,6 +13,7 @@ corners = np.int0(corners)
 # qualityLevel=0.15: A threshold parameter that defines the minimum accepted quality of the corners. It is a value between 0 and 1, where a higher value means fewer, but stronger corners will be detected. A value of 0.15 indicates that the quality of the corners must be at least 15% of the best possible corner quality. based on the eigenvalue analysis of the corner strength.
 # corners is a list of points (coordinates) where the algorithm detected corners in the image. These points are typically represented as 2D coordinates (x, y), which correspond to locations of strong features in the image.
 # The cv2.goodFeaturesToTrack() function returns a NumPy array of shape (N, 1, 2), where N is the number of detected corners (up to the specified maxCorners). Each element is a point represented as a 2D array [x, y], where x and y are the coordinates of a corner.
+# Corner detection algorithms return corner coordinates as floating-point numbers, which may include decimal values (e.g., 100.5, 200.5). However, pixel coordinates in an image must be whole numbers (integers), since a pixel cannot be in between two values.
 
 '''
 corners = np.array([[[100, 200]], [[150, 250]], [[200, 300]]])
@@ -39,10 +40,12 @@ corners = cv2.goodFeaturesToTrack(gray_img, maxCorners=50,
                 useHarrisDetector=True, k=0.1)
 corners = np.int0(corners)
 
+# yeh code har ek corner pe jaake circle draw kar dega
 for c in corners:
     x, y = c.ravel()
     img = cv2.circle(img, center=(x, y), radius=10, 
                     color=(0, 254, 0), thickness=-1)
+  #.circle returns the frame along with the circle
 
 cv2.imshow("Shape", img)
 cv2.waitKey(0)
