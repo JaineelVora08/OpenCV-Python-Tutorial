@@ -28,9 +28,40 @@ cv2.imshow("Cat", img)
 #Note: if you print rgb_img instead of img, to output theek se NAHI aayega...bcs imshow BGR ke hisab se print and regimg me to RGB ke hisab se array me stored hai
 # like cvtColor se array change ho gaya acc to RGB but imshow ko to vhi array BGR ki tarah lagega
 
-cv2.waitKey(0) # pause the program until any key is pressed
+cv2.waitKey(0) # pause the program until any key is pressed 
+# Without this, the image window might close immediately
+# 0: Wait indefinitely for a keypress.
+
+# Returns the ASCII value of the key pressed (if a key is pressed).
+# Returns -1 if no key is pressed within the given time.
+
 cv2.destroyAllWindows()
 
+'''
+
+use of waitKey(0):
+
+1. Timeout for User Interaction: Give the user a limited time to press a key before continuing:
+key = cv2.waitKey(5000)  # Wait for 5 seconds
+if key == ord('s'):  # If the user presses 's'
+    print("You pressed 's'!")
+else:
+    print("Timeout or no valid key pressed.")
+
+The program will pause and keep any OpenCV-created windows (e.g., from cv2.imshow) open for exactly 5 seconds.
+After the timeout, the program will continue executing the next lines of code, even if no key is pressed.
+So 5 seconds ke liye iske neeche ka code stops executing (BUT keypress vaala code chalega)
+
+2. Display an Image Briefly: Automatically close an image window after showing it for a specific duration:
+cv2.imshow('Image Window', img)
+cv2.waitKey(5000)
+cv2.destroyAllWindows()
+
+In summary, cv2.waitKey(5000) pauses the program for 5 seconds while waiting for a keypress and then resumes, regardless of whether a key was pressed or not.
+'''
+
+
+    
 gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 cv2.imwrite("assets/1_gray_cat.jpg", gray_img)
 # imwrite vaala destroyAllWindows ke baad bhi likh sakte hai
