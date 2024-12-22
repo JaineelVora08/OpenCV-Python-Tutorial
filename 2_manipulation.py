@@ -4,6 +4,7 @@ import numpy as np
 img = cv2.imread("assets/cat.jpg", cv2.IMREAD_COLOR)
 
 # RESIZE -  2 methods
+# format is (width, height) and not (height, width)
 img = cv2.resize(img, (1000, 2000))
 img = cv2.resize(img, (0, 0), fx=1, fy=0.5)
 #here, fx and fy are kitne se multiply karne hai previous sizes ko
