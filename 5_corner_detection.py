@@ -14,6 +14,12 @@ corners = np.int0(corners)
 # corners is a list of points (coordinates) where the algorithm detected corners in the image. These points are typically represented as 2D coordinates (x, y), which correspond to locations of strong features in the image.
 # The cv2.goodFeaturesToTrack() function returns a NumPy array of shape (N, 1, 2), where N is the number of detected corners (up to the specified maxCorners). Each element is a point represented as a 2D array [x, y], where x and y are the coordinates of a corner.
 
+'''
+corners = np.array([[[100, 200]], [[150, 250]], [[200, 300]]])
+This structure has shape (3, 1, 2)
+Here, corner refers to a 2D array (or pair), such as [[100, 200]], and .ravel() flattens it into a 1D array [100, 200]. The ravel() method returns a flattened 1D array, so you can directly unpack it into x and y.
+'''
+
 for c in corners:
   # The expression x, y = c.ravel() is used in OpenCV (and more generally in NumPy) to extract the coordinates (or values) from a 2D point or array and assign them to variables x and y
   # if c is a 2D array with shape (1, 2) (i.e., c = np.array([[x, y]])), .ravel() will flatten it into a 1D array: [x, y].
