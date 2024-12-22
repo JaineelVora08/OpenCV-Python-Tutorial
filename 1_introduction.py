@@ -43,7 +43,7 @@ use of waitKey(0):
 
 1. Timeout for User Interaction: Give the user a limited time to press a key before continuing:
 key = cv2.waitKey(5000)  # Wait for 5 seconds
-if key == ord('s'):  # If the user presses 's'
+if key == ord('s'):  # If the user presses 's'    (The ord() function in Python returns the Unicode code point (integer representation) of a given character)
     print("You pressed 's'!")
 else:
     print("Timeout or no valid key pressed.")
@@ -58,10 +58,7 @@ cv2.waitKey(5000)
 cv2.destroyAllWindows()
 
 In summary, cv2.waitKey(5000) pauses the program for 5 seconds while waiting for a keypress and then resumes, regardless of whether a key was pressed or not.
-'''
-
-
-    
+'''  
 gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 cv2.imwrite("assets/1_gray_cat.jpg", gray_img)
 # imwrite vaala destroyAllWindows ke baad bhi likh sakte hai
