@@ -27,7 +27,7 @@ height, width = img.shape[0], img.shape[1]
 img = cv2.rotate(img, cv2.ROTATE_180)
 
 #agar koi non standard angle se image rotate karvana ho to:
-#M is rotation matrix
+#M is rotation matrix - isme kaunsa image rotate karna hai vo NAHI hota as a parameter - kaunsa image warpAffine me aata hai
 # center: The point about which the scaling and rotation will occur - so NOT necessary ki center ke about hi ho - you can also rotate about some other point
 M = cv2.getRotationMatrix2D(center=(width/2, height/2), 
                             angle=150, scale=1)
