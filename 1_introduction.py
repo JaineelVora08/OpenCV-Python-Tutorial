@@ -26,6 +26,7 @@ print(rgb_img[0, 0])
 
 cv2.imshow("Cat", img)
 #Note: if you print rgb_img instead of img, to output theek se NAHI aayega...bcs imshow BGR ke hisab se print and regimg me to RGB ke hisab se array me stored hai
+# like cvtColor se array change ho gaya acc to RGB but imshow ko to vhi array BGR ki tarah lagega
 
 cv2.waitKey(0) # pause the program until any key is pressed
 cv2.destroyAllWindows()
